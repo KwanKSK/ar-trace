@@ -3,8 +3,6 @@ package com.artrace.app;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.webkit.PermissionRequest;
-import android.webkit.WebChromeClient;
-import android.webkit.WebView;
 import com.getcapacitor.BridgeActivity;
 
 public class MainActivity extends BridgeActivity {
@@ -17,20 +15,14 @@ public class MainActivity extends BridgeActivity {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-
-        // Allow WebView to access camera after bridge is ready
-        try {
-            WebView webView = getBridge().getWebView();
-            webView.setWebChromeClient(new WebChromeClient() {
-                @Override
-                public void onPermissionRequest(final PermissionRequest request) {
-                    runOnUiThread(() -> request.grant(request.getResources()));
-                }
-            });
-        } catch (Exception e) {
-            // Bridge might not be ready yet, camera will still work via Capacitor
-        }
+    public void onResume() {
+        super.onResume();
+        // Grant camera permission to WebView automatically
+        getBridge().getWebView().setWebChromeClient(new com.getcapacitor.BridgeWebChromeClient(getBridge()) {
+            @Override
+            public void onPermissionRequest(final PermissionRequest request) {
+                request.grant(request.getResources());
+            }
+        });
     }
 }
