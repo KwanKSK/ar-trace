@@ -1,0 +1,20 @@
+{
+  "name": "ar-trace-app",
+  "version": "1.0.0",
+  "description": "AR Trace - Trace drawings on paper using your phone camera",
+  "main": "index.js",
+  "scripts": {
+    "sync": "npx cap sync android",
+    "build": "cd android && chmod +x gradlew && ./gradlew assembleDebug",
+    "open": "npx cap open android"
+  },
+  "keywords": ["ar", "trace", "drawing"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/android": "^7.2.0",
+    "@capacitor/camera": "^8.2.0",
+    "@capacitor/cli": "^7.2.0",
+    "@capacitor/core": "^7.2.0"
+  }
+}

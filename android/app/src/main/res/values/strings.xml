@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">AR Trace</string>
+    <string name="title_activity_main">AR Trace</string>
+    <string name="package_name">com.artrace.app</string>
+    <string name="custom_url_scheme">com.artrace.app</string>
+</resources>
